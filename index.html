@@ -42,7 +42,7 @@ h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem}
 .chat-header-text h3{color:#fff;font-size:.9rem;font-weight:500}
 .chat-header-text p{color:rgba(255,255,255,.65);font-size:.72rem}
 .online-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;margin-right:4px}
-.chat-messages{padding:.9rem 1.25rem;min-height:220px;max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem}
+.chat-messages{padding:.9rem 1.25rem;min-height:220px;max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem}
 .msg{display:flex;gap:.45rem;align-items:flex-end}
 .msg.user{flex-direction:row-reverse}
 .msg-bubble{padding:.55rem .85rem;border-radius:14px;font-size:.855rem;max-width:88%;line-height:1.45}
@@ -56,25 +56,20 @@ h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem}
 .typing span:nth-child(2){animation-delay:.18s}
 .typing span:nth-child(3){animation-delay:.36s}
 @keyframes bop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-.quick-replies{padding:.4rem 1rem .65rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.quick-replies{padding:.4rem 1rem .5rem;display:flex;flex-wrap:wrap;gap:.35rem}
 .qr{background:#EBF2FA;color:#1B3A6B;border:none;border-radius:20px;padding:.35rem .8rem;font-size:.78rem;cursor:pointer;font-weight:500}
 .qr:hover{background:#d4e5f7}
 .chat-input-row{border-top:1px solid #e8e8e4;padding:.65rem .9rem;display:flex;gap:.45rem;align-items:center}
-.chat-input-row input{flex:1;border:1px solid #e0e0dc;border-radius:20px;padding:.45rem .9rem;font-size:.855rem;outline:none;background:#fafaf8;transition:opacity .3s}
+.chat-input-row input{flex:1;border:1px solid #e0e0dc;border-radius:20px;padding:.45rem .9rem;font-size:.855rem;outline:none;background:#fafaf8}
 .chat-input-row input:focus{border-color:#1B3A6B}
-.chat-input-row input:disabled{opacity:.4;cursor:not-allowed}
-.send-btn{background:#1B3A6B;color:#fff;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity .3s}
-.send-btn:disabled{opacity:.4;cursor:not-allowed}
-
-.cta-block{margin:.5rem 1.25rem 1rem;animation:fadeIn .5s}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.cta-block h3{font-size:1rem;font-weight:600;color:#1a1a18;margin-bottom:.25rem;text-align:center}
-.cta-block p{font-size:.8rem;color:#666;text-align:center;margin-bottom:1rem}
-.cta-buttons{display:flex;flex-direction:column;gap:.5rem}
-.btn-primary{background:#1B3A6B;color:#fff;border:none;padding:.85rem 1.25rem;border-radius:10px;font-size:.95rem;cursor:pointer;font-weight:500;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem}
-.btn-secondary{background:#fff;color:#1B3A6B;border:1.5px solid #1B3A6B;padding:.75rem 1.25rem;border-radius:10px;font-size:.9rem;cursor:pointer;font-weight:500;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none}
-.btn-icon{font-size:1rem}
-
+.chat-input-row input:disabled{opacity:.35;cursor:not-allowed}
+.send-btn{background:#1B3A6B;color:#fff;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.send-btn:disabled{opacity:.35;cursor:not-allowed}
+.cta-block{margin:.5rem 1.25rem 1.25rem;padding:1.1rem;background:#f0f7ff;border:1px solid #bed4f0;border-radius:10px;animation:fadeUp .45s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.cta-block p{font-size:.82rem;color:#444;margin-bottom:.85rem;text-align:center}
+.btn-primary{background:#1B3A6B;color:#fff;border:none;padding:.8rem 1.25rem;border-radius:9px;font-size:.92rem;cursor:pointer;font-weight:500;width:100%;margin-bottom:.45rem;display:flex;align-items:center;justify-content:center;gap:.45rem}
+.btn-secondary{background:#fff;color:#1B3A6B;border:1.5px solid #1B3A6B;padding:.7rem 1.25rem;border-radius:9px;font-size:.88rem;cursor:pointer;font-weight:500;width:100%;display:flex;align-items:center;justify-content:center;gap:.45rem;text-decoration:none}
 .footer{background:#1a1a18;color:#888;padding:1.25rem;text-align:center;font-size:.76rem}
 .footer a{color:#C9A84C;text-decoration:none}
 .hidden{display:none}
@@ -142,14 +137,12 @@ h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem}
       <p>CFO Fractional · Responde en minutos</p>
     </div>
   </div>
-
   <div class="chat-messages" id="msgs"></div>
   <div class="quick-replies" id="qrs"></div>
   <div id="cta-block" class="cta-block hidden"></div>
-
   <div class="chat-input-row">
     <input type="text" id="inp" placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter')send()">
-    <button class="send-btn" id="send-btn" onclick="send()">
+    <button class="send-btn" id="sbtn" onclick="send()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </div>
@@ -158,64 +151,105 @@ h2{font-size:1.15rem;font-weight:600;margin-bottom:1rem}
 <div class="footer">
   <p>Carlos Pallares · CFO Fractional · Tulum, Quintana Roo</p>
   <p style="margin-top:.35rem"><a href="mailto:cpallares286@gmail.com">cpallares286@gmail.com</a></p>
-  <p style="margin-top:.35rem;font-size:.68rem;color:#555">CFA Level I · Certificación BMV · 5 años en hospitalidad Tulum</p>
+  <p style="margin-top:.35rem;font-size:.68rem;color:#555">10+ años en finanzas e inversión · 5 años en hotelería boutique Tulum · CFA Level I · Certificación BMV</p>
 </div>
 
 <script>
+// Cada entrada tiene keys únicas sin solapamiento con otras
 const RESPONSES = [
-  { keys:['costo','precio','cobra','cuánto','cuanto','tarifa','fee','retainer'], reply:'El diagnóstico inicial de 30 minutos es completamente gratuito. Si trabajamos juntos, el retainer es de $15,000–$20,000 MXN al mes, sin contratos de largo plazo. ¿Cuál es la situación financiera de tu hotel hoy?', qrs:['Tengo problemas de liquidez','Los costos están muy altos','No sé dónde se va el dinero'] },
-  { keys:['funciona','proceso','metodolog','qué hac','que hac','cómo trabaj','como trabaj'], reply:'Empiezo revisando el estado de cuenta bancario — no los estados del contador, sino lo que realmente entró y salió del banco. En 30 días tenés un diagnóstico con los puntos exactos donde se pierde el EBITDA y cuánto es recuperable sin inversión de capital.', qrs:['¿Cuánto tiempo tarda?','¿Cuánto cuesta?','Quiero el diagnóstico'] },
-  { keys:['liquid','caja','flujo','cash','temporada baja','pagar','deuda'], reply:'La falta de liquidez en temporada baja casi siempre viene de costos variables no controlados que drenan el excedente de la temporada alta. Lo identifico exactamente en el diagnóstico. ¿Cuánto factura el hotel al año aproximadamente?', qrs:['Menos de $3M MXN','Entre $3M y $8M MXN','Más de $8M MXN'] },
-  { keys:['costo','gasto','mantenimiento','proveedor','compras','nómina','nomina'], reply:'Ese es el punto de fuga más común: 8-15% del total de gastos en sobreprecio que no se detecta porque no hay benchmark ni control preventivo. El diagnóstico lo cuantifica con números exactos del banco.', qrs:['Quiero el diagnóstico','¿Cuánto cuesta?'] },
-  { keys:['venta','ingreso','revenue','factura','ocup','ota','booking','reserva'], reply:'Si el hotel vende bien pero no queda dinero, eso es exactamente mi especialidad: el problema está en cómo se gestiona lo que ya entra, no en cómo entrar más. El diagnóstico gratuito clarifica dónde.', qrs:['Quiero el diagnóstico gratuito','¿Cómo funciona?'] },
-  { keys:['menos de','3m','3 m','pequeño','boutique','posada','airbnb'], reply:'Con ese volumen el diagnóstico aplica perfectamente. En operaciones de ese tamaño los resultados se ven más rápido porque hay menos capas. ¿Cuál es el problema principal hoy?', qrs:['Liquidez en temporada baja','Costos muy altos','No sé dónde se va el dinero'] },
-  { keys:['entre 3','3 mill','4 mill','5 mill','8m','más de 3','mas de 3'], reply:'Ese es exactamente el tamaño donde más trabajo. El diagnóstico gratuito toma 30 minutos y al final sabés cuánto EBITDA podés recuperar sin inversión de capital.', qrs:['Agendar diagnóstico','¿Cómo funciona?'] },
-  { keys:['quien','quién','experiencia','años','trabaj','trayectoria'], reply:'Soy CFO efectivo de un hotel en Tulum de $4M USD anuales — manejé dos temporadas bajas durante la peor crisis del mercado donde el 70% de competidores cerraron. CFA Level I, Certificación BMV, 5 años en hospitalidad en Quintana Roo.', qrs:['Ver el caso real','Quiero el diagnóstico'] },
-  { keys:['tiempo','meses','tarda','cuándo','cuando','rápido'], reply:'Los primeros cambios en el estado de cuenta aparecen entre 30 y 60 días. El EBITDA completo se estabiliza en 90 días.', qrs:['¿Cuánto cuesta?','Agendar diagnóstico'] },
+  {
+    keys: ['incluye el retainer','incluye retainer','qué incluye','que incluye','qué me das','que me das','qué recibo','que recibo'],
+    reply: 'El retainer mensual incluye: análisis semanal del estado de cuenta bancario, implementación de los puntos de control identificados, reportes de avance con números reales, y acceso directo para consultas operativas. Todo mes a mes, sin contratos de largo plazo ni permanencia mínima.',
+    qrs: ['¿Cuánto cuesta?','Quiero agendar una llamada']
+  },
+  {
+    keys: ['costo','precio','cuánto cobra','cuanto cobra','tarifa','fee','cuánto cuesta','cuanto cuesta'],
+    reply: 'El diagnóstico inicial de 30 minutos es completamente gratuito. Si decidimos trabajar juntos el retainer mensual es de $15,000–$20,000 MXN, según el tamaño de la operación. Sin contratos de largo plazo.',
+    qrs: ['¿Qué incluye el retainer?','Quiero agendar una llamada']
+  },
+  {
+    keys: ['funciona','proceso','metodolog','cómo trabaj','como trabaj','qué hac','que hac'],
+    reply: 'Empiezo revisando el estado de cuenta bancario de los últimos 12-24 meses. No los estados financieros del contador — el movimiento real del banco. En 30 días identifico con exactitud cuánto EBITDA se está perdiendo y en qué puntos.',
+    qrs: ['¿Cuánto tiempo tarda?','¿Cuánto cuesta?']
+  },
+  {
+    keys: ['tiempo','meses','tarda','cuándo','cuando','rápido','rapido'],
+    reply: 'Los primeros cambios en el estado de cuenta aparecen entre 30 y 60 días. La mejora completa del EBITDA se consolida en 90 días. No es consultoría que entrega un reporte — instalo procesos que empiezan a funcionar desde el primer mes.',
+    qrs: ['¿Cuánto cuesta?','Quiero agendar una llamada']
+  },
+  {
+    keys: ['liquid','caja','flujo','cash','temporada baja','pagar','deuda','credito','crédito'],
+    reply: 'La falta de liquidez en temporada baja casi siempre tiene una causa específica: el excedente de temporada alta se dispersa en gastos no controlados antes de que llegue la baja. El diagnóstico identifica exactamente cuánto es ese monto y dónde va.',
+    qrs: ['Quiero el diagnóstico gratuito','¿Cuánto cuesta?']
+  },
+  {
+    keys: ['costo','gasto','alto','caro','proveedor','compras','mantenimiento','nómina','nomina'],
+    reply: 'El problema más común es que nadie audita sistemáticamente si los precios de los proveedores son de mercado. En promedio encuentro un 8-15% del total de gastos en sobreprecio que nadie detectó porque no hay benchmark ni control preventivo de compras.',
+    qrs: ['Quiero el diagnóstico gratuito','¿Cómo funciona?']
+  },
+  {
+    keys: ['venta','ingreso','revenue','factura','ocup','ota','booking','reserva','comercial','canal'],
+    reply: 'Si el hotel vende bien pero no queda dinero, el problema está en cómo se gestiona lo que ya entra — no en conseguir más clientes. Ese es exactamente mi especialidad. El diagnóstico clarifica si el problema es comercial o financiero.',
+    qrs: ['Quiero el diagnóstico gratuito','¿Cuánto cuesta?']
+  },
+  {
+    keys: ['quien es','quién es','experiencia','años','trayectoria','trabaj','formación','formacion','estudios'],
+    reply: 'Tengo más de 10 años en finanzas e inversión y 5 años trabajando en hotelería boutique en Tulum. He gestionado operaciones de hasta $4M USD anuales durante crisis de mercado severas. CFA Level I, Certificación como asesor en estrategias de inversión BMV.',
+    qrs: ['Ver el caso real','Quiero el diagnóstico']
+  },
+  {
+    keys: ['garantía','garantia','result','funciona','no veo','seguro','riesgo','si no'],
+    reply: 'Al final del diagnóstico gratuito sabés exactamente cuánto EBITDA se está perdiendo y por qué, con números reales del banco. Si trabajamos juntos y no ves cambios en el estado de cuenta en los primeros 30 días, no tiene sentido continuar — el modelo es mes a mes por esa razón.',
+    qrs: ['¿Cuánto cuesta?','Quiero agendar una llamada']
+  },
+  {
+    keys: ['agendar','agenda','reunión','reunion','cita','llamada','hablar','contactar','quiero','interesa','diagnóstico','diagnostico'],
+    reply: 'Perfecto. El diagnóstico es 30 minutos por videollamada, completamente gratuito. Revisamos el estado de cuenta y al final de la llamada sabés exactamente qué está pasando con el EBITDA de tu hotel.',
+    qrs: [],
+    force_cta: true
+  }
 ];
 
-const DEFAULT_REPLY = 'Para darte una respuesta específica necesito saber más de tu situación. ¿Cuánto factura el hotel al año y cuál es el problema principal?';
-const DEFAULT_QRS = ['Problemas de liquidez','Costos muy altos','No sé dónde se va el dinero'];
+const DEFAULT_REPLY = '¿Cuánto factura el hotel aproximadamente y cuál es el problema principal que te preocupa hoy?';
+const DEFAULT_QRS = ['Problemas de liquidez','Los costos están muy altos','No sé dónde se va el dinero'];
 
-const CLOSING = 'Ya tengo suficiente contexto para ayudarte. El siguiente paso es una llamada de diagnóstico de 30 minutos — gratuita y sin compromiso. Elegí la opción que te resulte más fácil:';
+let userTurns = 0; // cuenta solo los turnos del usuario, no el saludo inicial
+const MAX_USER_TURNS = 2;
 
-let botTurns = 0;
-const MAX_TURNS = 3;
-
-function showCTA() {
-  const el = document.getElementById('cta-block');
-  el.innerHTML = `
-    <h3>¿Siguiente paso?</h3>
-    <p>${CLOSING}</p>
-    <div class="cta-buttons">
-      <button class="btn-primary" onclick="openBook()">
-        <span class="btn-icon">📅</span> Agendar diagnóstico gratuito
-      </button>
-      <a class="btn-secondary" href="mailto:cpallares286@gmail.com?subject=Diagnóstico CFO Fractional&body=Hola Carlos, me interesa el diagnóstico gratuito para mi hotel.">
-        <span class="btn-icon">✉️</span> Escribir por correo
-      </a>
-    </div>`;
-  el.classList.remove('hidden');
-
+function lockChat() {
   const inp = document.getElementById('inp');
-  const btn = document.getElementById('send-btn');
+  const btn = document.getElementById('sbtn');
   inp.disabled = true;
-  inp.placeholder = 'Elegí una opción arriba para continuar';
+  inp.placeholder = 'Usá los botones de arriba para continuar';
   btn.disabled = true;
   document.getElementById('qrs').innerHTML = '';
 }
 
-function addBot(text, qrList) {
+function showCTA() {
+  const el = document.getElementById('cta-block');
+  el.innerHTML = `
+    <p>Ya tengo suficiente contexto para ayudarte. El diagnóstico es 30 minutos y es completamente gratuito — elegí la opción que te resulte más fácil:</p>
+    <button class="btn-primary" onclick="window.open('https://calendly.com/cpallares286','_blank')">
+      📅 Agendar diagnóstico gratuito
+    </button>
+    <a class="btn-secondary" href="mailto:cpallares286@gmail.com?subject=Diagnóstico CFO Fractional&body=Hola Carlos, me interesa el diagnóstico gratuito para mi hotel. Mi nombre es [nombre] y mi hotel factura aproximadamente [monto] al año.">
+      ✉️ Escribir por correo
+    </a>`;
+  el.classList.remove('hidden');
+  lockChat();
+  document.getElementById('msgs').scrollTop = 9999;
+}
+
+function addBot(text, qrList, forceCta) {
   const c = document.getElementById('msgs');
   const d = document.createElement('div');
   d.className = 'msg bot';
   d.innerHTML = `<div class="msg-av b-av">CP</div><div class="msg-bubble">${text}</div>`;
   c.appendChild(d);
   c.scrollTop = c.scrollHeight;
-  botTurns++;
 
-  if (botTurns >= MAX_TURNS) {
-    setTimeout(showCTA, 600);
+  if (forceCta || userTurns >= MAX_USER_TURNS) {
+    setTimeout(showCTA, 700);
   } else if (qrList && qrList.length) {
     renderQRs(qrList);
   } else {
@@ -225,6 +259,7 @@ function addBot(text, qrList) {
 
 function addUser(text) {
   clearQRs();
+  userTurns++;
   const c = document.getElementById('msgs');
   const d = document.createElement('div');
   d.className = 'msg user';
@@ -240,19 +275,20 @@ function showTyping(cb) {
   d.innerHTML = `<div class="msg-av b-av">CP</div><div class="typing"><span></span><span></span><span></span></div>`;
   c.appendChild(d);
   c.scrollTop = c.scrollHeight;
-  setTimeout(() => { const el=document.getElementById('typ'); if(el)el.remove(); cb(); }, 900+Math.random()*500);
+  setTimeout(() => { const el=document.getElementById('typ'); if(el)el.remove(); cb(); }, 850+Math.random()*500);
 }
 
 function renderQRs(list) {
-  const el = document.getElementById('qrs');
-  el.innerHTML = list.map(t=>`<button class="qr" onclick="sendQR('${t}')">${t}</button>`).join('');
+  document.getElementById('qrs').innerHTML = list.map(t=>`<button class="qr" onclick="sendQR('${t}')">${t}</button>`).join('');
 }
-function clearQRs() { document.getElementById('qrs').innerHTML=''; }
+function clearQRs() { document.getElementById('qrs').innerHTML = ''; }
+
+function normalize(t) { return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
 
 function match(text) {
-  const t = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const t = normalize(text);
   for (const r of RESPONSES) {
-    if (r.keys.some(k=>t.includes(k.normalize('NFD').replace(/[\u0300-\u036f]/g,'')))) return r;
+    if (r.keys.some(k => t.includes(normalize(k)))) return r;
   }
   return null;
 }
@@ -266,7 +302,8 @@ function send() {
   addUser(text);
   const r = match(text);
   showTyping(() => {
-    addBot(r ? r.reply : DEFAULT_REPLY, r ? (r.qrs||DEFAULT_QRS) : DEFAULT_QRS);
+    if (r) addBot(r.reply, r.qrs || DEFAULT_QRS, r.force_cta);
+    else addBot(DEFAULT_REPLY, DEFAULT_QRS, false);
   });
 }
 
@@ -277,11 +314,16 @@ function sendQR(t) {
 }
 
 function scrollToChat() { document.getElementById('chat-section').scrollIntoView({behavior:'smooth'}); }
-function openBook() { window.open('https://calendly.com/cpallares286','_blank'); }
 
 window.onload = () => {
-  setTimeout(() => addBot('Hola. Soy Carlos. ¿Tu hotel tiene algún problema financiero específico que te esté preocupando hoy?',
-    ['Tengo problemas de liquidez','Los costos están muy altos','No sé dónde se va el dinero','¿Cuánto cuesta el servicio?']), 500);
+  setTimeout(() => {
+    const c = document.getElementById('msgs');
+    const d = document.createElement('div');
+    d.className = 'msg bot';
+    d.innerHTML = `<div class="msg-av b-av">CP</div><div class="msg-bubble">Hola, soy Carlos. ¿Tu hotel tiene algún problema financiero específico que te esté preocupando hoy?</div>`;
+    c.appendChild(d);
+    renderQRs(['Tengo problemas de liquidez','Los costos están muy altos','No sé dónde se va el dinero','¿Cuánto cuesta el servicio?']);
+  }, 500);
 };
 </script>
 </body>
